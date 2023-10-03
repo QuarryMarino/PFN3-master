@@ -28,7 +28,7 @@
         <button class="bg-[#007BFF] px-[15px] py-[7px] text-[#ffffff] rounded ml-auto mt-[10px] block">Ingresar</button>
     </form>
 
-    <div class=" grid place-content-center bg-[#ffffff] shadow-md p-[20px] justify-items-center w-72 ">
+    <div class=" grid place-content-center bg-[#ffffff] shadow-md p-[20px] justify-items-center">
      
     </div>
 </body>
