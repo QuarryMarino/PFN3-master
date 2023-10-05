@@ -1,3 +1,7 @@
+la base de datos esta fuera de las carpetas profe
+
+aqui tiene alguno de los usuarios:
+
 usuarios---->
 usuario:andmi@admin
 password:admin
