@@ -1,5 +1,6 @@
+<?php
 
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,7 @@
 
 <body class="bg-[#fff5d2] grid place-content-center">
     <img src="./assets/logo.jpg" alt="logo" class="w-72 h-72  block mx-auto" />
-    <form class="bg-[#ffffff] shadow-md p-[20px]" action="./src/controller/login_db.php" method="post">
+    <form class="bg-[#ffffff] shadow-md p-[20px]" action="./controller/login_db.php" method="post">
         <h1 class="text-[#8A8A8C] text-center text-lg">Bienvenido ingresa con tu cuenta</h1>
         <label for="email" class=" w-[300px] border border-[#8A8A8C] flex items-center p-[5px] rounded mt-[20px]">
             <input type="email" name="email" id="email" placeholder="Email" class="w-full outline-none" />
@@ -25,10 +26,10 @@
             <input type="password" name=password id="password" placeholder="Password" class="w-full outline-none" />
             <span class="material-symbols-outlined text-[#8A8A8C]">lock</span>
         </label>
-        <button class="bg-[#007BFF] px-[15px] py-[7px] text-[#ffffff] rounded ml-auto mt-[10px] block">Ingresar</button>
+        <button class="bg-[#2f75c0] px-[18px] py-[10px] text-[#007bff] rounded ml-auto mt-[10px] block">Ingresar</button>
     </form>
 
-    <div class=" grid place-content-center bg-[#ffffff] shadow-md p-[20px] justify-items-center">
+    <div class=" grid place-content-center bg-[#ffffff] shadow-md p-[20px] justify-items-center pb-40 pt-9 -mt-8">
      
     </div>
 </body>

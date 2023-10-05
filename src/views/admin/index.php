@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Dashboard</title>
     <link href="../../../dist/output.css" rel="stylesheet">
-    <script src="./script.js" defer> </script>
+    <script src="./admin.js" defer> </script>
 </head>
 
 <body class="flex max-h-[100vh]">
@@ -41,7 +43,7 @@
             </div>
             <div id="settingsbar" class="hidden bg-[#ffffff] shadow-xl border border-[#EEEFF3] py-[10px] z-10 absolute right-[23px] top-[52px]">
                 <a href="./perfil.php" class="flex items-center gap-2.5 border-b border-[#EEEFF3] py-[5px] px-[10px]"><span class="material-symbols-outlined">account_circle</span>Perfil</a>
-                <a href="../../../logout.php" class="flex items-center gap-2.5 text-[red] py-[5px] px-[10px]"><span class="material-symbols-outlined">logout</span>Logout</a>
+                <a href="../../logout.php" class="flex items-center gap-2.5 text-[red] py-[5px] px-[10px]"><span class="material-symbols-outlined">logout</span>Logout</a>
             </div>
         </div>
         <main class="bg-[#F5F6FA] h-[84%] w-[100%] px-[20px] py-[10px]">

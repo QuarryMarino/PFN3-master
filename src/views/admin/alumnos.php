@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Dashboard</title>
     <link href="../../../dist/output.css" rel="stylesheet">
-    <script src="./script.js" defer> </script>
+    <script src="./admin.js" defer> </script>
 </head>
 
 <body class="flex max-h-[100vh]">
@@ -22,10 +22,10 @@
         </div>
         <nav class="px-[15px]">
             <h2 class="text-[#9FA9A0] text-[15px] text-center py-[10px] font-semibold">MENU ADMINISTRACIÔN</h2>
-            <a href="./permisos.php" class="block text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">manage_accounts</span>Permisos</a>
-            <a href="./maestros.php" class="block text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">interactive_space</span>Maestros</a>
-            <a href="./alumnos.php" class="block text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">school</span>Alumnos</a>
-            <a href="./clases.php" class="block text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">overview_key</span>clases</a>
+            <a href="./permisos.php" class=" text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">manage_accounts</span>Permisos</a>
+            <a href="./maestros.php" class=" text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">interactive_space</span>Maestros</a>
+            <a href="./alumnos.php" class=" text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">school</span>Alumnos</a>
+            <a href="./clases.php" class=" text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">overview_key</span>clases</a>
         </nav>
     </header>
     <div class="w-[100%] h-[100vh]">
@@ -40,7 +40,7 @@
             </div>
             <div id="settingsbar" class="hidden bg-[#ffffff] shadow-xl border border-[#EEEFF3] py-[10px] z-10 absolute right-[23px] top-[52px]">
                 <a href="./perfil.php" class="flex items-center gap-2.5 border-b border-[#EEEFF3] py-[5px] px-[10px]"><span class="material-symbols-outlined">account_circle</span>Perfil</a>
-                <a href="../../../logout.php" class="flex items-center gap-2.5 text-[red] py-[5px] px-[10px]"><span class="material-symbols-outlined">logout</span>Logout</a>
+                <a href="../../logout.php" class="flex items-center gap-2.5 text-[red] py-[5px] px-[10px]"><span class="material-symbols-outlined">logout</span>Logout</a>
             </div>
         </div>
         <main class="bg-[#F5F6FA] h-[84%] w-[100%] px-[20px] py-[10px]">
@@ -72,6 +72,35 @@
                         </thead>
                         <tbody>
 
+                        <?php
+                            require_once("../../connection/connection.php");
+
+
+                            $query = "SELECT * FROM users";
+                             
+                            $result = mysqli_query($mysqli, $query);
+                            if ($result) {
+                                //count($row['students_list']);
+                            
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    if($row["roll_id"]=='student'){
+                                    echo '<tr>';
+                                    echo '<td>' . $row['id'] . '</td>';
+                                    echo '<td>' . $row['id'] . '</td>';
+                                    echo '<td>' . $row['name'] . '</td>';
+                                    echo '<td>' . $row['email'] . '</td>';
+                                    echo '<td>' . $row['direccion'] . '</td>';
+                                    echo '<td>' . $row['Nacimiento'] . '</td>';
+                                    echo '</tr>';
+                                }}
+                            
+                                echo '</table>';
+                            } else {
+                                echo 'No se encontraron resultados.';
+                            }
+                                    ?>
+
+
                         </tbody>
                     </table>
                 </div>
@@ -91,27 +120,29 @@
                 </span>
             </div>
 
-            <label for="dni">DNI</label>
-            <input class="border border-[#858388] rounded" type="text" name="dni" id="dni">
+            
+            
             <label for="email">correo Electronico</label>
             <input class="border border-[#858388] rounded" type="text" name="email" id="email">
             <label for="nombre">nombre(s)</label>
-            <input class="border border-[#858388] rounded" type="text" name="firstName" id="nombre">
+            <input class="border border-[#858388] rounded" type="text" name="name" id="nombre">
             <label for="apelido">Apelido(s)</label>
-            <input class="border border-[#858388] rounded" type="text" name="lastName" id="apelido">
+            <input class="border border-[#858388] rounded" type="text" name="apellido" id="apelido">
             <label for="dirección">Dirección</label>
-            <input class="border border-[#858388] rounded" type="text" name="address" id="dirección">
+            <input class="border border-[#858388] rounded" type="text" name="direccion" id="dirección">
             <label for="data">Feach de nacimiento</label>
-            <input class="border border-[#858388] rounded" type="date" name="birthdate" id="data">
+            <input class="border border-[#858388] rounded" type="date" name="Nacimiento" id="data">
             <label for="password">Password</label>
             <input class="border border-[#858388] rounded" type="password" name="password" id="password" />
-            <input class="hidden" type="radio" name="role" value="student" checked />
+            <input class="hidden" type="radio" name="roll_id" value="student" checked />
+            <input class="hidden" type="radio" name="clases" value="" checked />
             <div class="flex justify-end gap-[5px] mt-[10px]">
                 <span class="bg-[#858388] px-[10px] py-[5px] rounded text-[white] cursor-pointer exit">close</span>
                 <button class="bg-[#0079FF] px-[10px] py-[5px] rounded text-[white]">crear</button>
             </div>
         </form>
     </div>
+    
 </body>
 
 </html>

@@ -4,7 +4,7 @@ if (!isset($_SESSION["user_data"])) {
     echo "No esta loggeado";
     die();
 }
-if ($_SESSION["user_data"]["roll_id"] !== "teacher") {
+if ($_SESSION["user_data"]["roll_id"] !== "admin") {
     echo "you don't have permission to access";
     die();
 }
@@ -18,22 +18,25 @@ if ($_SESSION["user_data"]["roll_id"] !== "teacher") {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Dashboard</title>
     <link href="../../../dist/output.css" rel="stylesheet">
-    <script src="./maestro.js" defer> </script>
+    <script src="./admin.js" defer> </script>
 </head>
 
 <body class="flex max-h-[100vh]">
 <header class="bg-[#353A40] min-w-[260px] max-w-[260px] h-[100vh] row-span-3">
-        <div class="flex items-center gap-2.5 border-b px-[15px] py-[15px] border-[#9FA9A0]">
+        <a href="./index.php" class="flex items-center gap-2.5 border-b px-[15px] py-[15px] border-[#9FA9A0]">
             <img src="../../assets/logo.jpg" alt="logo" class="w-[50px] h-[50px] rounded-full object-cover" />
             <h2 class="text-[#9FA9A0] text-[20px]">Universidad</h2>
-        </div>
+        </a>
         <div class=" border-b px-[15px] py-[15px] border-[#9FA9A0]">
-            <h3 class="text-[#9FA9A0] text-[18px]">Maestro</h3>
-            <h4 class="text-[#9FA9A0] text-[15px]">maestro maestro</h4>
+            <h3 class="text-[#9FA9A0] text-[18px]">admin</h3>
+            <h4 class="text-[#9FA9A0] text-[15px]">administrador</h4>
         </div>
         <nav class="px-[15px]">
-            <h2 class="text-[#9FA9A0] text-[15px] text-center py-[10px] font-semibold">MENU MAESTROS</h2>
+            <h2 class="text-[#9FA9A0] text-[15px] text-center py-[10px] font-semibold">MENU ADMINISTRACIÔN</h2>
+            <a href="./permisos.php" class=" text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">manage_accounts</span>Permisos</a>
+            <a href="./maestros.php" class=" text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">interactive_space</span>Maestros</a>
             <a href="./alumnos.php" class=" text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">school</span>Alumnos</a>
+            <a href="./clases.php" class=" text-[#9FA9A0] flex items-center gap-2.5 py-[7px]"><span class="material-symbols-outlined">overview_key</span>clases</a>
         </nav>
     </header>
     <div class="w-[100%] h-[100vh]">

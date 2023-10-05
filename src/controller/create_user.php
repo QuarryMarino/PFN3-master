@@ -5,20 +5,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $apellido = $_POST["apellido"] ?? "";
     $email = $_POST["email"] ?? "";
     $password = $_POST["password"] ?? "";
-    $Nacimiento = $_POST["Nacimiento"] ?? "";
-    $clases = $_POST["clases"] ?? null;
+    $nacimiento = $_POST["Nacimiento"] ?? "";
+    $clases = $_POST["clases"] ?? '';
     $roll = $_POST["roll_id"] ?? "";
     $direccion = $_POST["direccion"] ?? "";
+    
 
     
    if (empty($name) || empty($apellido) || empty($email) || empty($password) || empty($nacimiento) || empty($roll)) {
-        $error_message = "All fields are required";
+        $error_message = "campos obligatorios";
     } else {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $mysqli->prepare("INSERT INTO users (name, apellido, email, password, nacimiento, classes, roll_id, direccion)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('sssssssss', $name, $apellido, $email, $password, $nacimiento, $classes, $roll_id, $direccion);
+       $stmt = $mysqli->prepare("INSERT INTO users (name, apellido, email, password, Nacimiento, clases, roll_id, direccion)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param('ssssssss', $name, $apellido, $email, $password, $nacimiento, $clases, $roll, $direccion);
+
 
         if ($stmt->execute()) {
             header("Location: {$_SERVER['HTTP_REFERER']}");

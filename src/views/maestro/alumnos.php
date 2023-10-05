@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Dashboard</title>
     <link href="../../../dist/output.css" rel="stylesheet">
-    <script src="./script.js" defer> </script>
+    <script src="./maestro.js" defer> </script>
 </head>
 
 <body class="flex max-h-[100vh]">
@@ -37,7 +37,7 @@
             </div>
             <div id="settingsbar" class="hidden bg-[#ffffff] shadow-xl border border-[#EEEFF3] py-[10px] z-10 absolute right-[23px] top-[52px]">
                 <a href="./perfil.php" class="flex items-center gap-2.5 border-b border-[#EEEFF3] py-[5px] px-[10px]"><span class="material-symbols-outlined">account_circle</span>Perfil</a>
-                <a href="../../../logout.php" class="flex items-center gap-2.5 text-[red] py-[5px] px-[10px]"><span class="material-symbols-outlined">logout</span>Logout</a>
+                <a href="../../logout.php" class="flex items-center gap-2.5 text-[red] py-[5px] px-[10px]"><span class="material-symbols-outlined">logout</span>Logout</a>
             </div>
         </div>
         <main class="bg-[#F5F6FA] h-[84%] w-[100%] px-[20px] py-[10px]">
@@ -68,28 +68,24 @@
                         </thead>
                         <tbody>
                             <?php
-                            require_once("../../model/connection.php");
+                            require_once("../../connection/connection.php");
 
 
-                            $teacher_id =  $_SESSION["user_data"]["id"];
-                            $query = "SELECT u.id, u.first_name, u.last_name, u.email, u.birthdate, u.role, u.address, u.active, u.dni
-                            FROM users AS u
-                            WHERE u.id IN (SELECT students FROM classes WHERE teacher_id = $teacher_id)";
+                            
+                            $query = "SELECT * FROM users";
 
                             $result = mysqli_query($mysqli, $query);
-
                             if ($result) {
+
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "Student ID: " . $row['id'] . "<br>";
-                                    echo "First Name: " . $row['first_name'] . "<br>";
-                                    echo "Last Name: " . $row['last_name'] . "<br>";
-                                    echo "Email: " . $row['email'] . "<br>";
-                                    echo "Birthdate: " . $row['birthdate'] . "<br>";
-                                    echo "Role: " . $row['role'] . "<br>";
-                                    echo "Address: " . $row['address'] . "<br>";
-                                    echo "Active: " . $row['active'] . "<br>";
-                                    echo "DNI: " . $row['dni'] . "<br>";
-                                    echo "<br>";
+                                    echo '<tr>';
+                                    echo '<td>' . $row['id'] . '</td>';
+                                    echo '<td>' . $row['id'] . '</td>';
+                                    echo '<td>' . $row['name'] . '</td>';
+                                    echo '<td>' . $row['email'] . '</td>';
+                                    echo '<td>' . $row['direccion'] . '</td>';
+                                    echo '<td>' . $row['Nacimiento'] . '</td>';
+                                    echo '</tr>';
                                 }
                             } else {
                                 echo "Error: " . mysqli_error($mysqli);

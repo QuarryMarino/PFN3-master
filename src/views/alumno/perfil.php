@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION["user_data"])) {
+    echo "No esta loggeado";
+    die();
+}
+if ($_SESSION["user_data"]["roll_id"] !== "student") {
+    echo "you don't have permission to access";
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,11 +18,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Dashboard</title>
     <link href="../../../dist/output.css" rel="stylesheet">
-    <script src="./script.js" defer> </script>
+    <script src="./students.js" defer> </script>
 </head>
 
 <body class="flex max-h-[100vh]">
-    <header class="bg-[#353A40] min-w-[260px] max-w-[260px] h-[100vh] row-span-3">
+<header class="bg-[#353A40] min-w-[260px] max-w-[260px] h-[100vh] row-span-3">
         <div class="flex items-center gap-2.5 border-b px-[15px] py-[15px] border-[#9FA9A0]">
             <img src="../../assets/logo.jpg" alt="logo" class="w-[50px] h-[50px] rounded-full object-cover" />
             <h2 class="text-[#9FA9A0] text-[20px]">Universidad</h2>
@@ -38,7 +49,7 @@
             </div>
             <div id="settingsbar" class="hidden bg-[#ffffff] shadow-xl border border-[#EEEFF3] py-[10px] z-10 absolute right-[23px] top-[52px]">
                 <a href="./perfil.php" class="flex items-center gap-2.5 border-b border-[#EEEFF3] py-[5px] px-[10px]"><span class="material-symbols-outlined">account_circle</span>Perfil</a>
-                <a href="../../../logout.php" class="flex items-center gap-2.5 text-[red] py-[5px] px-[10px]"><span class="material-symbols-outlined">logout</span>Logout</a>
+                <a href="../../logout.php" class="flex items-center gap-2.5 text-[red] py-[5px] px-[10px]"><span class="material-symbols-outlined">logout</span>Logout</a>
             </div>
         </div>
         <main class="bg-[#F5F6FA] h-[84%] w-[100%] px-[20px] py-[10px]">
@@ -53,22 +64,23 @@
                     </div>
                     <form class="grid px-[20px]" action="../../controller/update_user.php" method="post">
                         <label for="email">correo Electronico</label>
+                        
                         <input class="border border-[#858388] rounded" type="text" name="email" id="email" value="<?php echo isset($_SESSION["user_data"]["email"]) ? $_SESSION["user_data"]["email"] : ''; ?>">
 
                         <label for="password">Password</label>
                         <input class="border border-[#858388] rounded" type="password" name="password" id="password" />
 
                         <label for="nombre">nombre(s)</label>
-                        <input class="border border-[#858388] rounded" type="text" name="firstName" id="nombre" value="<?php echo isset($_SESSION["user_data"]["first_name"]) ? $_SESSION["user_data"]["first_name"] : ''; ?>">
+                        <input class="border border-[#858388] rounded" type="text" name="name" id="nombre" value="<?php echo isset($_SESSION["user_data"]["name"]) ? $_SESSION["user_data"]["name"] : ''; ?>">
 
                         <label for="apelido">Apelido(s)</label>
-                        <input class="border border-[#858388] rounded" type="text" name="lastName" id="apelido" value="<?php echo isset($_SESSION["user_data"]["last_name"]) ? $_SESSION["user_data"]["last_name"] : ''; ?>">
+                        <input class="border border-[#858388] rounded" type="text" name="apellido" id="apellido" value="<?php echo isset($_SESSION["user_data"]["apellido"]) ? $_SESSION["user_data"]["apellido"] : ''; ?>">
 
                         <label for="dirección">Dirección</label>
-                        <input class="border border-[#858388] rounded" type="text" name="address" id="dirección" value="<?php echo isset($_SESSION["user_data"]["address"]) ? $_SESSION["user_data"]["address"] : ''; ?>">
+                        <input class="border border-[#858388] rounded" type="text" name="direccion" id="dirección" value="<?php echo isset($_SESSION["user_data"]["direccion"]) ? $_SESSION["user_data"]["direccion"] : ''; ?>">
                         <label for="data">Feach de nacimiento</label>
-                        <input class="border border-[#858388] rounded" type="date" name="birthdate" id="data" value="<?php echo isset($_SESSION["user_data"]["birthdate"]) ? $_SESSION["user_data"]["birthdate"] : ''; ?>">
-                        <input class="hidden" type="radio" name="role" value="teacher" checked />
+                        <input class="border border-[#858388] rounded" type="date" name="nacimiento" id="data" value="<?php echo isset($_SESSION["user_data"]["Nacimiento"]) ? $_SESSION["user_data"]["Nacimiento"] : ''; ?>">
+                        <input class="hidden" type="radio" name="roll_id" value="teacher" checked />
                         <input class="hidden" type="radio" name="userId" value="<?php echo isset($_SESSION["user_data"]["id"]) ? $_SESSION["user_data"]["id"] : ''; ?>" checked />
                         <button class="bg-[#0079FF] px-[10px] py-[5px] mt-[10px] w-[200px] rounded text-[white]">Guardar cambios</button>
                     </form>
