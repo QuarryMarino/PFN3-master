@@ -52,7 +52,7 @@
                 <div class="bg-[#ffffff] w-[100%] min-h-[450px] rounded">
                     <div class="flex justify-between items-center border-b border-[#E5E5E5] px-[20px] py-[10px]">
                         <h2 class="text-[18px]">informaión de clases</h2>
-                        <button id="btnNewUser" class="bg-[#0079FF] py-[5px] px-[20px] text-[white] rounded">Agregar Alumno</button>
+                        <button id="btnNewUser" class="bg-[#0079FF] py-[5px] px-[20px] text-[white] rounded">Agregar clase</button>
                     </div>
                     <div class="pt-[10px] flex justify-end gap-[20px] px-[20px]">
                         <span class="block">Search:</span>
@@ -121,14 +121,14 @@
             <label for="teacher">Maestros disponible para la clase:</label>
             <select class="border border-[#858388] rounded outline-0" name="teacher" id="teacher">
                 <?php
-                require_once("../../model/connection.php");
+                require_once("../../connection/connection.php");
 
-                $stmt = $mysqli->prepare("SELECT id, first_name, last_name FROM users WHERE role = 'teacher'");
+                $stmt = $mysqli->prepare("SELECT id, name, apellido FROM users WHERE roll = 'teacher'");
                 if ($stmt->execute()) {
                     $result = $stmt->get_result();
                     $teachers = $result->fetch_all(MYSQLI_ASSOC);
                     foreach ($teachers as $teacher) {
-                        $fullName = $teacher["first_name"] . ' ' . $teacher["last_name"];
+                        $fullName = $teacher["name"] . ' ' . $teacher["apellido"];
                         echo '<option value="' . $teacher["id"] . '">' . $fullName . '</option>';
                     }
                 } else {

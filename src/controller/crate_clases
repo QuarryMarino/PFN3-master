@@ -1,0 +1,46 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    require_once("../connection/connection.php");
+    $id_teacher = $_POST["id_teacher"];
+    $students_list = $_POST["students_list"];
+    $name_clases = $_POST["name_clases"] ?? null;
+
+    if (!$id_teacher || !$students_list || !$name_clases) {
+        echo json_encode(["message" => "Missing required data"]);
+    } else {
+        try {
+            $sql = "INSERT INTO clases (id_taecher, students_list, name_clases)
+                    VALUES (?, ?, ?)";
+
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param('sss', $id_teacher, $students_list, $name_clases);
+
+            if ($stmt->execute()) {
+                $classId = $stmt->insert_id;
+                $updateSql = "UPDATE users SET clases = CONCAT(clases, ?, ',') WHERE id = ?";
+                $updateStmt = $mysqli->prepare($updateSql);
+                $classIdStr = $classId . ",";
+                $updateStmt->bind_param('si', $classIdStr, $teacherId);
+
+                if ($updateStmt->execute()) {
+                    // Return a success message
+                    header("Location: {$_SERVER['HTTP_REFERER']}");
+                    exit;
+                } else {
+                    // Handle update error
+                    echo json_encode(["message" => "Error updating teacher's classes"]);
+                }
+
+                $updateStmt->close(); // Close the update statement
+            } else {
+                // Handle execution error
+                echo json_encode(["message" => "Error creating class"]);
+            }
+
+            $stmt->close(); // Close the statement
+        } catch (Exception $e) {
+            // Handle any exceptions that may occur
+            echo json_encode(["message" => "An error occurred: " . $e->getMessage()]);
+        }
+    }
+}

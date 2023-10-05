@@ -52,7 +52,7 @@
                 <div class="bg-[#ffffff] w-[100%] min-h-[450px] rounded">
                     <div class="flex justify-between items-center border-b border-[#E5E5E5] px-[20px] py-[10px]">
                         <h2 class="text-[18px]">informaión de maestros</h2>
-                        <button  id="btnNewUser" class="bg-[#0079FF] py-[5px] px-[20px] text-[white] rounded">Agregar maestro</button>
+                        <button id="btnNewUser" class="bg-[#0079FF] py-[5px] px-[20px] text-[white] rounded">Agregar maestro</button>
                     </div>
                     <div class="pt-[10px] flex justify-end gap-[20px] px-[20px]">
                         <span class="block">Search:</span>
@@ -71,33 +71,33 @@
                         </thead>
                         <tbody>
 
-                        <?php
+                            <?php
                             require_once("../../connection/connection.php");
 
 
                             $query = "SELECT * FROM users";
-                             
+
                             $result = mysqli_query($mysqli, $query);
                             if ($result) {
                                 //count($row['students_list']);
-                            
+
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    if($row["roll_id"]=='teacher'){
-                                    echo '<tr>';
-                                    echo '<td>' . $row['id'] . '</td>';
-                                    
-                                    echo '<td>' . $row['name'] . '</td>';
-                                    echo '<td>' . $row['email'] . '</td>';
-                                    echo '<td>' . $row['direccion'] . '</td>';
-                                    echo '<td>' . $row['Nacimiento'] . '</td>';
-                                    echo '</tr>';
+                                    if ($row["roll_id"] == 'teacher') {
+                                        echo '<tr>';
+                                        echo '<td>' . $row['id'] . '</td>';
+
+                                        echo '<td>' . $row['name'] . '</td>';
+                                        echo '<td>' . $row['email'] . '</td>';
+                                        echo '<td>' . $row['direccion'] . '</td>';
+                                        echo '<td>' . $row['Nacimiento'] . '</td>';
+                                        echo '</tr>';
+                                    }
                                 }
-                            }
                                 echo '</table>';
                             } else {
                                 echo 'No se encontraron resultados.';
                             }
-                                    ?>
+                            ?>
 
                         </tbody>
                     </table>
@@ -117,20 +117,20 @@
                     close
                 </span>
             </div>
-
             <label for="email">correo Electronico</label>
             <input class="border border-[#858388] rounded" type="text" name="email" id="email">
             <label for="nombre">nombre(s)</label>
-            <input class="border border-[#858388] rounded" type="text" name="firstName" id="nombre">
+            <input class="border border-[#858388] rounded" type="text" name="name" id="nombre">
             <label for="apelido">Apelido(s)</label>
-            <input class="border border-[#858388] rounded" type="text" name="lastName" id="apelido">
+            <input class="border border-[#858388] rounded" type="text" name="apellido" id="apelido">
             <label for="dirección">Dirección</label>
-            <input class="border border-[#858388] rounded" type="text" id="dirección">
+            <input class="border border-[#858388] rounded" type="text" name="direccion" id="dirección">
             <label for="data">Feach de nacimiento</label>
-            <input class="border border-[#858388] rounded" type="date" name="birthdate" id="data">
+            <input class="border border-[#858388] rounded" type="date" name="Nacimiento" id="data">
             <label for="password">Password</label>
             <input class="border border-[#858388] rounded" type="password" name="password" id="password" />
-            <input class="hidden" type="radio" name="role" value="teacher" checked />
+            <input class="hidden" type="radio" name="roll_id" value="teacher" checked />
+            <input class="hidden" type="radio" name="clases" value="" checked />
             <div class="flex justify-end gap-[5px] mt-[10px]">
                 <span class="bg-[#858388] px-[10px] py-[5px] rounded text-[white] cursor-pointer exit">close</span>
                 <button class="bg-[#0079FF] px-[10px] py-[5px] rounded text-[white]">crear</button>

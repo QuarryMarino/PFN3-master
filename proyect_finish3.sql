@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2023 a las 18:51:07
+-- Tiempo de generación: 05-10-2023 a las 19:42:49
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -93,7 +93,10 @@ INSERT INTO `users` (`id`, `name`, `apellido`, `email`, `password`, `Nacimiento`
 (3, 'Mariaaaa', 'Santos', 'maria@example', '$2y$10$cwdXrRi2ixuSGpYB142fkeprDFTbrEQMuSefeThaXwCVZYxGFlxI6', '1985-09-20', 'Zumba, CrossFit', 'teacher', 'Avenida Secundária, 456'),
 (4, 'Pedro', 'Ferreira', 'pedro@example', 'pedro@example', '2000-03-10', 'Spinning, Musculação', 'student', 'Travessa da Rua, 789'),
 (5, 'test', 'test', 'test@test', 'test', '1114-12-14', '', 'student', 'test'),
-(6, 'tucacas', 'tucacas', 'tucaca@tu', 'tucacas', '1411-12-14', '', 'student', 'tucacas');
+(6, 'tucacas', 'tucacas', 'tucaca@tu', 'tucacas', '1411-12-14', '', 'teacher', 'tucacas'),
+(7, 'vamos', 'vamos', 'vamos@vamos', 'vamos', '1411-12-14', '', 'teacher', 'vamos'),
+(8, 'maestro', 'maestro', 'maestro@maestro', '$2y$10$Ov7j0MScQ7.ZzKdyAIJbCeC24s00h9t5YsVfedwXifAMyKunwu8Pa', '1444-12-14', '', 'teacher', 'maestro'),
+(9, 'alumno', 'alumno', 'alumno@alumno', '$2y$10$alHqo.gJnubuIRUA7dBlM.HWuHAnRGXBzwl9tVEvKpMmGklhNEZPG', '5555-05-05', '', 'student', 'alumno');
 
 --
 -- Índices para tablas volcadas
@@ -138,7 +141,7 @@ ALTER TABLE `roll`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
